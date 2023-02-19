@@ -1,15 +1,33 @@
 require "sys_func"
 
+-- Will always equipRight because Left is used by Wireless modem
 function AttackMode()
-    -- TODO
+    local pos = InventoryLookup("minecraft:diamond_sword")
+    assert(turtle.select(pos[1]))
+    assert(turtle.equipRight())
 end
 
 function DigMode()
-    -- TODO
+    local pos = InventoryLookup("minecraft:diamond_shovel")
+    assert(turtle.select(pos[1]))
+    assert(turtle.equipRight())
 end
 
 function MineMode()
-    -- TODO
+    local pos = InventoryLookup("minecraft:diamond_pickaxe")
+    assert(turtle.select(pos[1]))
+    assert(turtle.equipRight())
+end
+
+function HostileMode()
+    AttackMode()
+    while (true)
+    do
+        assert(turtle.attack())
+        assert(turtle.attackDown())
+        assert(turtle.attackUp())
+        assert(turtle.turnLeft())
+    end
 end
 
 function Display()
