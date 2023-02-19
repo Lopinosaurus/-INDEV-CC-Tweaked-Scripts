@@ -9,11 +9,12 @@ function DigMode()
 end
 
 function MineMode()
-    
+    -- TODO
 end
 
--- Turtle Troop Creator
-
+function Display()
+    -- TODO
+end
 
 function InventoryLookup(item)
     local invPlaces = {}
