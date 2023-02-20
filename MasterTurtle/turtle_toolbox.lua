@@ -65,19 +65,20 @@ function HeadToCoord(coord)
     local curTableCoord = table.pack(gps.locate())
     local currentDistance = ProceedDistance2D(curTableCoord, coord)
 
+    while (GetOrientation() ~= "north")
+    do
+        turtle.turnLeft()
+    end
+
     while (currentDistance > 1)
     do
-        turtle.forward()
-        curTableCoord = table.pack(gps.locate())
-        currentDistance = ProceedDistance2D(curTableCoord, coord)
+        ProceedNextMove()
     end
 
     while (not turtle.detectDown)
     do
         turtle.down()
     end
-
-    -- Need to proceed distance between current coords and targeted coords.
 end
 
 function ProceedDistance2D(a, b)
@@ -107,8 +108,29 @@ function GetOrientation()
     end
 
     local properties = table.pack(turtle.inspect())[2]
-    local facing = properties["state"]["facing"]
-    print(facing)
+    return properties["state"]["facing"]
+end
+
+function ProceedNextMove(curCoords, destCoords)
+    if (curCoords[1] < destCoords[1]) then
+        turtle.turnLeft()
+        turtle.forward()
+        turtle.turnRight()
+    end
+
+    if (curCoords[1] > destCoords[1]) then
+        turtle.turnRight()
+        turtle.forward()
+        turtle.turnLeft()
+    end
+
+    if (curCoords[3] < destCoords[3]) then
+        turtle.forward()
+    end
+
+    if (curCoords[3] > destCoords[3]) then
+        turtle.back()
+    end
 end
 
 -- endregion
