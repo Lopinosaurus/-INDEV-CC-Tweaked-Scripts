@@ -78,6 +78,8 @@ function HeadToCoord(coord)
     while (currentDistance > 1)
     do
         ProceedNextMove(curTableCoord, coord)
+        curTableCoord = table.pack(gps.locate())
+        currentDistance = ProceedDistance2D(curTableCoord, coord)
     end
 
     while (not turtle.detectDown)
