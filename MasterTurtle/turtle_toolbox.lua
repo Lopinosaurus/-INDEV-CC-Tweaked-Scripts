@@ -106,7 +106,7 @@ function GetOrientation()
         assert(turtle.place())
     end
 
-    local properties = table.pack(turtle.inspect()[2])
+    local properties = table.pack(turtle.inspect())[2]
     local facing = properties["state"]["facing"]
     print(facing)
 end
