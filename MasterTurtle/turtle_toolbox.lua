@@ -62,6 +62,19 @@ function HeadToCoord(coord)
         turtle.up()
     end
 
+    local curTableCoord = table.pack(gps.locate())
+    local currentDistance = ProceedDistance2D(curTableCoord, coord)
+
+    while (currentDistance ~= 0)
+    do
+        turtle.forward()
+        curTableCoord = table.pack(gps.locate())
+        local newDistance = ProceedDistance2D(curTableCoord, coord)
+        if (newDistance > currentDistance) then
+            turtle.turnLeft()
+        end
+    end
+
     -- Need to proceed distance between current coords and targeted coords.
 end
 
