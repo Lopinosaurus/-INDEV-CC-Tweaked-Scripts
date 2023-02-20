@@ -55,6 +55,10 @@ function HeadToCoord(coord)
         assert(turtle.equipLeft(), "HeadToCoord : Could not equipLeft")
     end
 
+    while (GetOrientation() ~= "north")
+    do
+        turtle.turnLeft()
+    end
     -- Take off to avoid trees and obstacles
     for i = 1, 50, 1
     do
@@ -65,10 +69,6 @@ function HeadToCoord(coord)
     local curTableCoord = table.pack(gps.locate())
     local currentDistance = ProceedDistance2D(curTableCoord, coord)
 
-    while (GetOrientation() ~= "north")
-    do
-        turtle.turnLeft()
-    end
 
     while (currentDistance > 1)
     do
@@ -108,6 +108,14 @@ function GetOrientation()
     end
 
     local properties = table.pack(turtle.inspect())[2]
+
+    MineMode()
+    turtle.dig()
+    turtle.forward()
+    turtle.suck()
+    turtle.dig()
+    turtle.forward()
+    turtle.suck()
     return properties["state"]["facing"]
 end
 
