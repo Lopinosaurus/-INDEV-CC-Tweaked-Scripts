@@ -82,7 +82,7 @@ function HeadToCoord(coord)
         currentDistance = ProceedDistance2D(curTableCoord, coord)
     end
 
-    while (not turtle.detectDown)
+    while (not turtle.detectDown())
     do
         turtle.down()
     end
