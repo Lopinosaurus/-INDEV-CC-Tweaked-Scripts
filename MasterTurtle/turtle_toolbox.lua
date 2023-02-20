@@ -55,10 +55,14 @@ function HeadToCoord(coord)
         assert(turtle.equipLeft(), "HeadToCoord : Could not equipLeft")
     end
 
-    while (GetOrientation() ~= "north")
-    do
+    -- Orientation to north
+    if (GetOrientation() == "east") then turtle.turnLeft() end
+    if (GetOrientation() == "south") then
+        turtle.turnLeft()
         turtle.turnLeft()
     end
+    if (GetOrientation() == "west") then turtle.turnRight() end
+
     -- Take off to avoid trees and obstacles
     for i = 1, 50, 1
     do
