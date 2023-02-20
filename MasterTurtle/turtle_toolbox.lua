@@ -38,7 +38,8 @@ end
 
 -- region Turtle methods
 function HeadToCoord(coord)
-    local currentPos = gps.locate()
+    -- Index of packed table starts from 0
+    local currentPos = table.pack(gps.locate)
     -- Equip Modem on Left side if not already equiped
     local modemPos = InventoryLookup("computercraft:ender_modem")
     if (#modemPos ~= 0) then
@@ -49,10 +50,9 @@ function HeadToCoord(coord)
     -- Take off to avoid trees and obstacles
     for i = 1, 50, 1
     do
+        ClearUpTurtle()
         turtle.up()
     end
-
-    print(gps.locate())
 
     -- Need to proceed distance between current coords and targeted coords.
 end
@@ -61,8 +61,14 @@ function ProceedDistance2D(x, y)
     return math.sqrt(math.pow((x[2] - x[1]), 2) + math.pow((y[2] - y[1]), 2))
 end
 
--- endregion
+function ClearUpTurtle()
+    if (turtle.detectUp()) then
+        MineMode()
+        turtle.digUp()
+    end
+end
 
+-- endregion
 
 -- region Sys Turtle functions
 function InventoryLookup(item)
