@@ -3,20 +3,44 @@ require "sys_func"
 -- Will always equipRight because Left is used by Wireless modem
 function AttackMode()
     local pos = InventoryLookup("minecraft:diamond_sword")
-    assert(turtle.select(pos[1]))
-    assert(turtle.equipRight())
+    if (#pos ~= 0) then
+        assert(turtle.select(pos[1]))
+        assert(turtle.equipRight())
+    end
 end
 
 function DigMode()
     local pos = InventoryLookup("minecraft:diamond_shovel")
-    assert(turtle.select(pos[1]))
-    assert(turtle.equipRight())
+    if (#pos ~= 0) then
+        assert(turtle.select(pos[1]))
+        assert(turtle.equipRight())
+    end
 end
 
 function MineMode()
     local pos = InventoryLookup("minecraft:diamond_pickaxe")
-    assert(turtle.select(pos[1]))
-    assert(turtle.equipRight())
+    if (#pos ~= 0) then
+        assert(turtle.select(pos[1]))
+        assert(turtle.equipRight())
+    end
+end
+
+function HeadToCoord(coord)
+    local currentPos = gps.locate()
+    -- Equip Modem on Left side if not already equiped
+    local modemPos = InventoryLookup("computercraft:ender_modem")
+    if (#modemPos ~= 0) then
+        assert(turtle.select(pos[1]))
+        assert(turtle.equipLeft())
+    end
+
+    -- Take off to avoid trees and obstacles
+    for i = 1, 50, 1
+    do
+        assert(turtle.up)
+    end
+
+    -- Need to proceed distance between current coords and targeted coords.
 end
 
 function HostileMode()
