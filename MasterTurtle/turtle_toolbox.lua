@@ -86,6 +86,9 @@ function HeadToCoord(coord)
     do
         turtle.down()
     end
+
+    local modem = peripheral.find("modem") or error("No modem attached!", 0)
+    modem.transmit(0, 43, ("Turtle arrived at %s"):format(textutils.serialize(curTableCoord)))
 end
 
 function ProceedDistance2D(a, b)
