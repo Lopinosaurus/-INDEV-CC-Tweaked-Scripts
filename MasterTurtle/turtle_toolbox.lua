@@ -28,14 +28,14 @@ function HeadToCoord(coord)
     -- Equip Modem on Left side if not already equiped
     local modemPos = InventoryLookup("computercraft:ender_modem")
     if (#modemPos ~= 0) then
-        assert(turtle.select(pos[1]))
-        assert(turtle.equipLeft())
+        assert(turtle.select(pos[1]), "HeadToCoord : Could not select pos[1]")
+        assert(turtle.equipLeft(), "HeadToCoord : Could not equipLeft")
     end
 
     -- Take off to avoid trees and obstacles
     for i = 1, 50, 1
     do
-        assert(turtle.up)
+        turtle.up()
     end
 
     -- Need to proceed distance between current coords and targeted coords.
@@ -45,10 +45,10 @@ function HostileMode()
     AttackMode()
     while (true)
     do
-        assert(turtle.attack())
-        assert(turtle.attackDown())
-        assert(turtle.attackUp())
-        assert(turtle.turnLeft())
+        turtle.attack()
+        turtle.attackDown()
+        turtle.attackUp()
+        turtle.turnLeft()
     end
 end
 
