@@ -87,7 +87,7 @@ function HeadToCoord(coord)
 end
 
 function ProceedDistance2D(a, b)
-    return math.sqrt(math.pow((b[1] - a[1]), 2) + math.pow((b[2] - a[2]), 2))
+    return math.sqrt(math.pow((b[0] - a[0]), 2) + math.pow((b[2] - a[2]), 2))
 end
 
 function ClearUpTurtle()
