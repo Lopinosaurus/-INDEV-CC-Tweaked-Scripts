@@ -83,8 +83,8 @@ function HeadToCoord(coord)
     -- Need to proceed distance between current coords and targeted coords.
 end
 
-function ProceedDistance2D(x, y)
-    return math.sqrt(math.pow((x[2] - x[1]), 2) + math.pow((y[2] - y[1]), 2))
+function ProceedDistance2D(a, b)
+    return math.sqrt(math.pow((b[1] - a[1]), 2) + math.pow((b[2] - a[2]), 2))
 end
 
 function ClearUpTurtle()
