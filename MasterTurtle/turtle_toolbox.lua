@@ -70,8 +70,6 @@ function HeadToCoord(coord)
         turtle.forward()
         curTableCoord = table.pack(gps.locate())
         currentDistance = ProceedDistance2D(curTableCoord, coord)
-        
-        if (curTableCoord[0] )
     end
 
     while (not turtle.detectDown)
@@ -99,21 +97,20 @@ function GetOrientation()
 
     turtle.back()
     if (#stonePos ~= 0) then
-         turtle.select(stonePos[1])
+        turtle.select(stonePos[1])
         assert(turtle.place())
     end
     turtle.back()
-    if (#torchPos ~= 0) then 
-        turtle.select(torchPos[1]) 
+    if (#torchPos ~= 0) then
+        turtle.select(torchPos[1])
         assert(turtle.place())
     end
 
-    local properties = table.pack(turtle.inspect())
-    for i = 1, #properties[2], 1 
-    do
-        print(properties[2][i])
-    end 
+    local properties = table.pack(turtle.inspect()[2])
+    local facing = properties["state"]["facing"]
+    print(facing)
 end
+
 -- endregion
 
 -- region Sys Turtle functions
