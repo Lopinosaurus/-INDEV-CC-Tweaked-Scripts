@@ -75,6 +75,11 @@ function HeadToCoord(coord)
         end
     end
 
+    while (not turtle.detectDown)
+    do
+        turtle.down()
+    end
+
     -- Need to proceed distance between current coords and targeted coords.
 end
 
