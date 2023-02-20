@@ -23,6 +23,14 @@ function MineMode()
     end
 end
 
+function FellMode()
+    local pos = InventoryLookup("minecraft:diamond_axe")
+    if (#pos ~= 0) then
+        assert(turtle.select(pos[1]))
+        assert(turtle.equipRight())
+    end
+end
+
 function HostileMode()
     AttackMode()
     while (true)
