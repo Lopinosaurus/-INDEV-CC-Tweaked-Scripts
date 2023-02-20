@@ -63,9 +63,11 @@ function InventoryLookup(item)
     -- 16 is max inv index
     for i = 1, 16, 1
     do
-        if (assert(turtle.getItemDetail(1)["name"] ~= nil and assert(turtle.getItemDetail(1)["name"] == item))) then
-            invPlaces[tableCpt] = i
-            tableCpt = tableCpt + 1
+        if (assert(turtle.getItemDetail(1) ~= nil)) then
+            if (assert(turtle.getItemDetail(1)["name"])) then
+                invPlaces[tableCpt] = i
+                tableCpt = tableCpt + 1
+            end
         end
     end
 
