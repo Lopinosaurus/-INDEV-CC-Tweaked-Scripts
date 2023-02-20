@@ -1,4 +1,4 @@
--- Will always equipRight because Left is used by Wireless modem
+-- region Turtle Modes
 function AttackMode()
     local pos = InventoryLookup("minecraft:diamond_sword")
     if (#pos ~= 0) then
@@ -23,6 +23,20 @@ function MineMode()
     end
 end
 
+function HostileMode()
+    AttackMode()
+    while (true)
+    do
+        turtle.attack()
+        turtle.attackDown()
+        turtle.attackUp()
+        turtle.turnLeft()
+    end
+end
+
+-- endregion
+
+-- region Turtle methods
 function HeadToCoord(coord)
     local currentPos = gps.locate()
     -- Equip Modem on Left side if not already equiped
@@ -38,24 +52,19 @@ function HeadToCoord(coord)
         turtle.up()
     end
 
+    print(gps.locate())
+
     -- Need to proceed distance between current coords and targeted coords.
 end
 
-function HostileMode()
-    AttackMode()
-    while (true)
-    do
-        turtle.attack()
-        turtle.attackDown()
-        turtle.attackUp()
-        turtle.turnLeft()
-    end
+function ProceedDistance2D(x, y)
+    return math.sqrt(math.pow((x[2] - x[1]), 2) + math.pow((y[2] - y[1]), 2))
 end
 
-function Display()
-    -- TODO
-end
+-- endregion
 
+
+-- region Sys Turtle functions
 function InventoryLookup(item)
     local invPlaces = {}
     local tableCpt = 1
@@ -71,3 +80,5 @@ function InventoryLookup(item)
 
     return invPlaces
 end
+
+-- endregion
