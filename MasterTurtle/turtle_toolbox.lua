@@ -56,12 +56,13 @@ function HeadToCoord(coord)
     end
 
     -- Orientation to north
-    if (GetOrientation() == "east") then turtle.turnLeft() end
-    if (GetOrientation() == "south") then
+    local orientation = GetOrientation()
+    if (orientation == "east") then turtle.turnLeft() end
+    if (orientation == "south") then
         turtle.turnLeft()
         turtle.turnLeft()
     end
-    if (GetOrientation() == "west") then turtle.turnRight() end
+    if (orientation == "west") then turtle.turnRight() end
 
     -- Take off to avoid trees and obstacles
     for i = 1, 50, 1
