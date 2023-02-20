@@ -65,14 +65,13 @@ function HeadToCoord(coord)
     local curTableCoord = table.pack(gps.locate())
     local currentDistance = ProceedDistance2D(curTableCoord, coord)
 
-    while (currentDistance ~= 0)
+    while (currentDistance > 1)
     do
         turtle.forward()
         curTableCoord = table.pack(gps.locate())
-        local newDistance = ProceedDistance2D(curTableCoord, coord)
-        if (newDistance > currentDistance) then
-            turtle.turnLeft()
-        end
+        currentDistance = ProceedDistance2D(curTableCoord, coord)
+        
+        if (curTableCoord[0] )
     end
 
     while (not turtle.detectDown)
@@ -94,6 +93,27 @@ function ClearUpTurtle()
     end
 end
 
+function GetOrientation()
+    local stonePos = InventoryLookup("minecraft:cobblestone")
+    local torchPos = InventoryLookup("minecraft:torch")
+
+    turtle.back()
+    if (#stonePos ~= 0) then
+         turtle.select(stonePos[1])
+        assert(turtle.place())
+    end
+    turtle.back()
+    if (#torchPos ~= 0) then 
+        turtle.select(torchPos[1]) 
+        assert(turtle.place())
+    end
+
+    local properties = table.pack(turtle.inspect())
+    for i = 1, #properties[2], 1 
+    do
+        print(properties[2][i])
+    end 
+end
 -- endregion
 
 -- region Sys Turtle functions
