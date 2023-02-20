@@ -168,3 +168,11 @@ function InventoryLookup(item)
 end
 
 -- endregion
+
+local dest = table.pack(gps.locate())
+for i = 1, 10, 1
+do
+    turtle.forward()
+end
+
+HeadToCoord(dest)
