@@ -1,5 +1,3 @@
-require "sys_func"
-
 -- Will always equipRight because Left is used by Wireless modem
 function AttackMode()
     local pos = InventoryLookup("minecraft:diamond_sword")
