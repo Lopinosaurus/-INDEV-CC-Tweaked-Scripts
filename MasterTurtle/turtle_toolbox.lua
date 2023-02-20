@@ -72,7 +72,7 @@ function HeadToCoord(coord)
 
     while (currentDistance > 1)
     do
-        ProceedNextMove()
+        ProceedNextMove(curTableCoord, coord)
     end
 
     while (not turtle.detectDown)
