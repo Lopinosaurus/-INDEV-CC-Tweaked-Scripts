@@ -16,12 +16,10 @@ function Display()
             local xCoord = io.read()
             io.write("Z Coord : ")
             local zCoord = io.read()
-
-            local tableCoord = { tonumber(xCoord), 0, tonumber(zCoord) }
+            -- Send user input to turtle
+            modem.transmit(0, 43, ("%s %s %s"):format(input, xCoord, zCoord))
         end
 
-        -- Send user input to turtle
-        modem.transmit(0, 43, input)
         io.write("Command sent. \n")
         io.write("You can send your next command : \n")
         io.write("Type 1 to send turtle to special coordinates. \n")
