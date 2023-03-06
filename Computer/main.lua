@@ -1,5 +1,8 @@
 -- Modem API
 
+local modem = peripheral.find("modem") or error("No modem attached !", 0)
+
+
 function Display()
     io.write("Welcome to TurtleMaster Menu.")
     io.write("To send the turtle to special coordinates, type 1.")
@@ -14,8 +17,10 @@ function Display()
         local zCoord = io.read()
 
         local tableCoord = { tonumber(xCoord), 0, tonumber(zCoord) }
-        HeadToCoord(tableCoord)
     end
+
+    -- Send user input to turtle
+    modem.transmit(0, 43, input)
 end
 
 Display()

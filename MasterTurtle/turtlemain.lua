@@ -9,6 +9,6 @@ do
 
     -- Case message == "1"
     if string.byte(tostring(message)) == 49 then
-        -- Test for bytes coordinates, format to be determined
+        turtle.forward()
     end
 end
