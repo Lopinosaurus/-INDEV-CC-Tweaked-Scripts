@@ -12,9 +12,9 @@ do
     -- Message starts with "1"
     if msg:sub(1, 1) == "1" then
         local strX = ""
-        local strY = ""
         local strZ = ""
-        -- current = 1 --> x, current = 2 --> y, current = 3 --> z
+        -- current = 1 --> x, current = 2 --> z
+
         local current = 1
         -- Starts at 3 because [1] = 1, [2] == ' ', [3] = first coord
         for i = 3, #msg
@@ -24,9 +24,6 @@ do
                 strX = strX .. char
             end
             if char ~= " " and current == 2 then
-                strY = strY .. char
-            end
-            if char ~= " " and current == 3 then
                 strZ = strZ .. char
             end
             if char == " " then
@@ -36,7 +33,7 @@ do
 
         destCoords = {}
         destCoords[1] = tonumber(strX)
-        destCoords[2] = tonumber(strY)
+        destCoords[2] = 0 -- don't care because will be overwritten
         destCoords[3] = tonumber(strZ)
         HeadToCoord(destCoords)
     end
