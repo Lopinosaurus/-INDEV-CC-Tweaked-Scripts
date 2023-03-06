@@ -34,7 +34,10 @@ do
             end
         end
 
-        destCoords = { tonumber(strX), tonumber(strY), tonumber(strZ) }
+        destCoords = {}
+        destCoords[1] = tonumber(strX)
+        destCoords[2] = tonumber(strY)
+        destCoords[3] = tonumber(strZ)
         HeadToCoord(destCoords)
     end
 end
