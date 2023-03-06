@@ -1,5 +1,4 @@
 require "turtle_toolbox"
-require "sys_func"
 
 local modem = peripheral.find("modem") or error("No modem attached !", 0)
 modem.open(0)
@@ -10,7 +9,8 @@ do
 
     -- Case message == "1"
     local msg = tostring(message)
-    if msg.startswith("1") then
+    -- Message starts with "1"
+    if msg:sub(1, 1) == "1" then
         local strX = ""
         local strY = ""
         local strZ = ""
